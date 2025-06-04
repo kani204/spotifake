@@ -90,6 +90,4 @@ Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) par
 
 ## Contacto
 
-Tu Nombre - [@tutwitter](https://twitter.com/tutwitter)
-
 Link del Proyecto: [https://github.com/kani204/spotifake](https://github.com/kani204/spotifake) 
