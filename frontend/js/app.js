@@ -23,7 +23,7 @@ function draw() {
     background(18, 18, 18); // color de fondo oscuro
     
     if (currentSong && isPlaying) {
-        // aqui ira la visualizacion de ondas de audio
+        // aca va a ir la visualizacion de ondas de audio
         stroke(29, 185, 84); // color verde de Spotify
         strokeWeight(2);
         noFill();
@@ -45,7 +45,7 @@ progressBar.addEventListener('click', seekTo);
 // funciones de control
 function togglePlay() {
     if (!currentSong) {
-        // aqui ira la logica para cargar una cancion
+        // aca va a ir la logica para cargar una cancion
         console.log('No hay cancion seleccionada');
         return;
     }
@@ -63,7 +63,7 @@ function togglePlay() {
 function adjustVolume(e) {
     const volume = e.target.value / 100;
     if (currentSong) {
-        // aqui ira la logica para ajustar el volumen
+        // aca va a ir la logica para ajustar el volumen
         console.log('Volumen ajustado a:', volume);
     }
 }
@@ -73,17 +73,17 @@ function seekTo(e) {
     
     const rect = progressBar.getBoundingClientRect();
     const pos = (e.clientX - rect.left) / rect.width;
-    // aqui ira la logica para buscar en la cancion
+    // aca va a ir la logica para buscar en la cancion
     console.log('Buscando a:', pos * 100, '%');
 }
 
 // funciones de autenticacion
 document.getElementById('loginBtn').addEventListener('click', () => {
-    // aqui ira la logica de inicio de sesion
+    // aca va a ir la logica de inicio de sesion
     console.log('Iniciar sesion');
 });
 
 document.getElementById('registerBtn').addEventListener('click', () => {
-    // aqui ira la logica de registro
+    // aca va a ir la logica de registro
     console.log('Registrarse');
 }); 
