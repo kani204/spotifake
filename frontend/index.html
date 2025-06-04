@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotifake - Tu música favorita</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <nav>
+                <div class="logo">Spotifake</div>
+                <div class="nav-links">
+                    <a href="#" class="active">Inicio</a>
+                    <a href="#">Buscar</a>
+                    <a href="#">Biblioteca</a>
+                </div>
+                <div class="user-section">
+                    <button id="loginBtn">Iniciar Sesión</button>
+                    <button id="registerBtn">Registrarse</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="player-section">
+                <div class="now-playing">
+                    <h2>Reproduciendo ahora</h2>
+                    <div class="player-controls">
+                        <button id="prevBtn">Anterior</button>
+                        <button id="playBtn">Reproducir</button>
+                        <button id="nextBtn">Siguiente</button>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="volume-control">
+                        <input type="range" id="volumeSlider" min="0" max="100" value="50">
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html> 
