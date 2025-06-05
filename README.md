@@ -1,35 +1,18 @@
-# Spotifake - Plataforma de Streaming de Música
+# Spotifake
 
-Spotifake es una plataforma de streaming de música inspirada en Spotify, desarrollada como proyecto para la materia de Diseño e Implementación de Sitios Web Dinámicos.
+Una plataforma de streaming de música inspirada en Spotify, desarrollada como proyecto de práctica.
 
-## Características
+## Requisitos Previos
 
-- 🎵 Reproducción de música en streaming
-- 👤 Sistema de autenticación de usuarios
-- 🎨 Interfaz moderna y responsiva
-- 🎧 Visualizador de ondas de audio
-- 📱 Diseño adaptable a diferentes dispositivos
-
-## Tecnologías Utilizadas
-
-### Frontend
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- p5.js para visualizaciones
-- p5.sound.js para manejo de audio
-
-### Backend
-- Node.js
-- Express.js
-- MySQL
-- JWT para autenticación
+- Node.js (v14 o superior)
+- MySQL (v8 o superior)
+- npm o yarn
 
 ## Instalación
 
 1. Clonar el repositorio:
 ```bash
-git clone https://github.com/kani204/spotifake.git
+git clone <url-del-repositorio>
 cd spotifake
 ```
 
@@ -39,35 +22,72 @@ cd backend
 npm install
 ```
 
-3. Configurar variables de entorno:
-Crear un archivo `.env` en la carpeta `backend` con las siguientes variables:
-```
-PORT=3000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=tu_contraseña
-DB_NAME=spotifake
-JWT_SECRET=tu_secreto_jwt
+3. Configurar la base de datos:
+   - Crear una base de datos MySQL llamada `spotifake`
+   - Ejecutar el script SQL en `backend/src/config/database.sql`
+
+4. Configurar variables de entorno:
+   - Crear un archivo `.env` en la carpeta `backend` con el siguiente contenido:
+   ```
+   PORT=3000
+   DB_HOST=localhost
+   DB_USER=root
+   DB_PASSWORD=tu_contraseña
+   DB_NAME=spotifake
+   JWT_SECRET=tu_clave_secreta
+   ```
+
+5. Instalar dependencias del frontend:
+```bash
+cd ../frontend
+npm install
 ```
 
-4. Iniciar el servidor:
+## Ejecución
+
+1. Iniciar el servidor backend:
 ```bash
+cd backend
 npm start
 ```
 
-5. Abrir el frontend:
-Simplemente abre el archivo `frontend/index.html` en tu navegador.
+2. Acceder a la aplicación:
+   - Abrir el navegador en `http://localhost:3000`
+
+## Características
+
+- Autenticación de usuarios
+- Reproducción de música
+- Visualizador de audio
+- Gestión de playlists
+- Búsqueda de canciones
+- Interfaz responsive
+
+## Tecnologías Utilizadas
+
+- Frontend:
+  - HTML5
+  - CSS3
+  - JavaScript (ES6+)
+  - p5.js (para visualización de audio)
+
+- Backend:
+  - Node.js
+  - Express
+  - MySQL
+  - Sequelize
+  - JWT para autenticación
 
 ## Estructura del Proyecto
 
 ```
 spotifake/
 ├── backend/
-│   ├── config/
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   ├── server.js
+│   ├── src/
+│   │   ├── config/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── middleware/
 │   └── package.json
 ├── frontend/
 │   ├── css/
@@ -79,10 +99,10 @@ spotifake/
 ## Contribuir
 
 1. Fork el proyecto
-2. Crea tu rama de características (`git checkout -b feature/AmazingFeature`)
+2. Crear una rama para tu feature (`git checkout -b feature/AmazingFeature`)
 3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
 4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
+5. Abrir un Pull Request
 
 ## Licencia
 

@@ -5,46 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotifake - Tu música favorita</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
 </head>
 <body>
-    <div id="app">
-        <header>
-            <nav>
-                <div class="logo">Spotifake</div>
-                <div class="nav-links">
-                    <a href="#" class="active">Inicio</a>
-                    <a href="#">Buscar</a>
-                    <a href="#">Biblioteca</a>
-                </div>
-                <div class="user-section">
-                    <button id="loginBtn">Iniciar Sesión</button>
-                    <button id="registerBtn">Registrarse</button>
-                </div>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>Spotifake</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+                    <li><a href="#"><i class="fas fa-search"></i> Buscar</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Tu Biblioteca</a></li>
+                </ul>
             </nav>
-        </header>
+            <div class="playlists">
+                <h2>Playlists</h2>
+                <ul id="playlists-list">
+                    <!-- Las playlists se cargarán dinámicamente -->
+                </ul>
+            </div>
+        </aside>
 
-        <main>
-            <section class="player-section">
-                <div class="now-playing">
-                    <h2>Reproduciendo ahora</h2>
-                    <div class="player-controls">
-                        <button id="prevBtn">Anterior</button>
-                        <button id="playBtn">Reproducir</button>
-                        <button id="nextBtn">Siguiente</button>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress"></div>
-                    </div>
-                    <div class="volume-control">
-                        <input type="range" id="volumeSlider" min="0" max="100" value="50">
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar canciones, artistas...">
+                </div>
+                <div class="user-menu">
+                    <button id="login-btn" class="btn-login">Iniciar Sesión</button>
+                    <div id="user-profile" class="user-profile hidden">
+                        <img src="" alt="Profile" id="profile-img">
+                        <span id="username"></span>
                     </div>
                 </div>
-            </section>
+            </header>
+
+            <div class="content">
+                <section class="featured">
+                    <h2>Destacados</h2>
+                    <div class="featured-grid" id="featured-songs">
+                        <!-- Las canciones destacadas se cargarán dinámicamente -->
+                    </div>
+                </section>
+
+                <section class="recent">
+                    <h2>Recientes</h2>
+                    <div class="songs-list" id="recent-songs">
+                        <!-- Las canciones recientes se cargarán dinámicamente -->
+                    </div>
+                </section>
+            </div>
         </main>
+
+        <!-- Player -->
+        <footer class="player">
+            <div class="now-playing">
+                <img src="" alt="Album Cover" id="current-cover">
+                <div class="track-info">
+                    <h3 id="current-title">No hay canción seleccionada</h3>
+                    <p id="current-artist">-</p>
+                </div>
+            </div>
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button id="shuffle"><i class="fas fa-random"></i></button>
+                    <button id="prev"><i class="fas fa-step-backward"></i></button>
+                    <button id="play-pause"><i class="fas fa-play"></i></button>
+                    <button id="next"><i class="fas fa-step-forward"></i></button>
+                    <button id="repeat"><i class="fas fa-redo"></i></button>
+                </div>
+                <div class="progress-bar">
+                    <span id="current-time">0:00</span>
+                    <div class="progress">
+                        <div class="progress-filled"></div>
+                    </div>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="volume-control">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" id="volume" min="0" max="100" value="100">
+            </div>
+        </footer>
     </div>
 
+    <!-- Modales -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes cuenta? <a href="#" id="show-register">Regístrate</a></p>
+        </div>
+    </div>
+
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Registro</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-username">Nombre de usuario</label>
+                    <input type="text" id="reg-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Contraseña</label>
+                    <input type="password" id="reg-password" required>
+                </div>
+                <button type="submit">Registrarse</button>
+            </form>
+            <p>¿Ya tienes cuenta? <a href="#" id="show-login">Inicia Sesión</a></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/visualizer.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html> 
